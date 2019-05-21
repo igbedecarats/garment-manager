@@ -1,23 +1,35 @@
-version: '3'
+version: '2.1'
 
 services:
   rabbitmq-container:
     image: rabbitmq:3-management
     ports:
-      - 5672:5672
+      - 5673:5672
       - 15673:15672
     volumes:
       - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
       - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    healthcheck:
+      timeout: 5s
+      interval: 5s
+      retries: 5
+      test:
+        - "CMD"
+        - "rabbitmqctl"
+        - "status"
 
   mysql-container:
     image: mysql
     ports:
       - 3307:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./mysql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   producer-container:
     build:
@@ -27,3 +39,15 @@ services:
       - 8090:8090
     depends_on:
       - rabbitmq-container
+
+  storage-container:
+    build:
+      context: .
+      dockerfile: ./product-storage/Dockerfile
+    ports:
+      - 8091:8091
+    depends_on:
+      rabbitmq-container:
+          condition: service_healthy
+      mysql-container:
+          condition: service_healthy

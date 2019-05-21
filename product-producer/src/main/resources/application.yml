@@ -17,7 +17,7 @@ rabbitmq:
 
 spring:
   rabbitmq:
-    host: 172.21.0.3
+    host: rabbitmq-container
     port: 5672
     username: guest
     password: guest

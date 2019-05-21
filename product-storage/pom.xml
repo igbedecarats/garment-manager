@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<hibernate.version>5.2.13.Final</hibernate.version> <!-- Downgrading to this version because of bug https://hibernate.atlassian.net/browse/HHH-12436 in version 5.2.14.Final -->
+		<start-class>com.gm.storage.StorageApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -63,27 +64,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/docker</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/docker</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
