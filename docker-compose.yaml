@@ -38,7 +38,8 @@ services:
     ports:
       - 8090:8090
     depends_on:
-      - rabbitmq-container
+      rabbitmq-container:
+        condition: service_healthy
 
   storage-container:
     build:
@@ -49,5 +50,15 @@ services:
     depends_on:
       rabbitmq-container:
           condition: service_healthy
+      mysql-container:
+          condition: service_healthy
+
+  consumer-container:
+    build:
+      context: .
+      dockerfile: ./product-consumer/Dockerfile
+    ports:
+      - 8092:8092
+    depends_on:
       mysql-container:
           condition: service_healthy
