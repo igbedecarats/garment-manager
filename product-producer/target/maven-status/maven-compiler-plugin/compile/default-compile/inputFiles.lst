@@ -1,0 +1,10 @@
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/product/usecase/MessagingException.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/product/web/ProductController.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/ProductProducerApplication.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/product/usecase/PublishProductService.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/shared/GlobalExceptionHandler.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/shared/HttpApiError.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/shared/SwaggerConfig.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/product/usecase/PublishProductServiceImpl.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/product/usecase/ProductDto.java
+/Users/ivan.bedecarats/dev/git/gm/product-producer/src/main/java/com/gm/producer/components/shared/RabbitMQConfig.java

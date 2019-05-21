@@ -1,0 +1,16 @@
+com/gm/consumer/product/web/ProductController.class
+com/gm/consumer/product/usecase/ProductDto$DescriptionDto.class
+com/gm/consumer/product/usecase/ProductDto.class
+com/gm/consumer/product/domain/ProductRepository.class
+com/gm/consumer/product/usecase/ProductDto$MetadataDto.class
+com/gm/consumer/product/domain/Pricing.class
+com/gm/consumer/shared/GlobalExceptionHandler.class
+com/gm/consumer/shared/SwaggerConfig.class
+com/gm/consumer/product/domain/Product.class
+com/gm/consumer/product/usecase/FindProductService.class
+com/gm/consumer/shared/HttpApiError.class
+com/gm/consumer/product/domain/Description.class
+com/gm/consumer/product/usecase/ProductDto$PricingDto.class
+com/gm/consumer/product/domain/Metadata.class
+com/gm/consumer/ProductConsumerApplication.class
+com/gm/consumer/product/usecase/FindProductServiceImpl.class

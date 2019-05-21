@@ -1,0 +1,76 @@
+{
+   "rabbit_version":"3.7.14",
+   "users":[
+      {
+         "name":"guest",
+         "password_hash":"31+VfhB4egma5RjGEE52umjhclMe4GIVWt5z3cPJ8gI9DpWu",
+         "hashing_algorithm":"rabbit_password_hashing_sha256",
+         "tags":"administrator"
+      }
+   ],
+   "vhosts":[
+      {
+         "name":"/"
+      }
+   ],
+   "permissions":[
+      {
+         "user":"guest",
+         "vhost":"/",
+         "configure":".*",
+         "write":".*",
+         "read":".*"
+      }
+   ],
+   "topic_permissions":[
+
+   ],
+   "parameters":[
+
+   ],
+   "global_parameters":[
+      {
+         "name":"cluster_name",
+         "value":"rabbit@docker"
+      }
+   ],
+   "policies":[
+
+   ],
+   "queues":[
+      {
+         "name":"products.queue",
+         "vhost":"/",
+         "durable":false,
+         "auto_delete":false,
+         "arguments":{
+
+         }
+      }
+   ],
+   "exchanges":[
+      {
+         "name":"products.exchange",
+         "vhost":"/",
+         "type":"direct",
+         "durable":true,
+         "auto_delete":false,
+         "internal":false,
+         "arguments":{
+
+         }
+      }
+   ],
+   "bindings":[
+      {
+         "source":"products.exchange",
+         "vhost":"/",
+         "destination":"products.queue",
+         "destination_type":"queue",
+         "routing_key":"products.routingkey",
+         "arguments":{
+
+         }
+      }
+   ]
+}

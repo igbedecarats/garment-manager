@@ -1,0 +1,13 @@
+com/gm/storage/components/product/usecase/StoreProductService.class
+com/gm/storage/components/shared/RabbitMQConfig.class
+com/gm/storage/components/product/usecase/StoreProductServiceImpl.class
+com/gm/storage/components/product/usecase/ProductDto$DescriptionDto.class
+com/gm/storage/components/product/domain/Description.class
+com/gm/storage/components/product/usecase/ProductDto.class
+com/gm/storage/components/product/usecase/ProductDto$MetadataDto.class
+com/gm/storage/components/product/domain/ProductRepository.class
+com/gm/storage/components/product/domain/Product.class
+com/gm/storage/components/product/usecase/ProductDto$PricingDto.class
+com/gm/storage/components/product/domain/Metadata.class
+com/gm/storage/components/product/domain/Pricing.class
+com/gm/storage/ProductStorageApplication.class

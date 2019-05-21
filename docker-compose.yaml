@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  rabbitmq-container:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15673:15672
+    volumes:
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+
+  mysql-container:
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d:ro
+
+  producer-container:
+    build:
+      context: .
+      dockerfile: ./product-producer/Dockerfile
+    ports:
+      - 8090:8090
+    depends_on:
+      - rabbitmq-container

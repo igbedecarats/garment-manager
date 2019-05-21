@@ -1,0 +1,10 @@
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/domain/Description.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/usecase/ProductDto.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/usecase/StoreProductServiceImpl.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/domain/ProductRepository.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/domain/Metadata.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/usecase/StoreProductService.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/ProductStorageApplication.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/shared/RabbitMQConfig.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/domain/Product.java
+/Users/ivan.bedecarats/dev/git/gm/product-storage/src/main/java/com/gm/storage/components/product/domain/Pricing.java

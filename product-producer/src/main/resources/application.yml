@@ -1,0 +1,38 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /producer
+
+info:
+  build:
+    group: @project.groupId@
+    artifact: @project.artifactId@
+    version: @project.version@
+    name: @project.name@
+
+rabbitmq:
+  exchange: products.exchange
+  queue: products.queue
+  routingkey: products.routingkey
+
+spring:
+  rabbitmq:
+    host: 172.21.0.3
+    port: 5672
+    username: guest
+    password: guest
+
+logging:
+  file: producer.log
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: never
+      cache:
+        time-to-live: 20000ms
+    info:
+      enabled: true
