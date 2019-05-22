@@ -91,7 +91,6 @@ gm_mysql-container_1      docker-entrypoint.sh mysqld      Up (healthy)   0.0.0.
 gm_producer-container_1   java -Xmn256m -Xmx768m -ja ...   Up             0.0.0.0:8090->8090/tcp
 gm_rabbitmq-container_1   docker-entrypoint.sh rabbi ...   Up (healthy)   15671/tcp, 0.0.0.0:15673->15672/tcp, 25672/tcp, 4369/tcp, 5671/tcp, 0.0.0.0:5673->5672/tcp
 gm_storage-container_1    java -Xmn256m -Xmx768m -ja ...   Up             8090/tcp, 0.0.0.0:8091->8091/tcp
-gm git:(master) ✗ curl -X GET "http://localhost:8092/consumer/api/products/BD7933" -H "accept: application/json;charset=UTF-8"
 ```
 ### Troubleshooting
 
