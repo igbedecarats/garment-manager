@@ -8,6 +8,7 @@ import lombok.*;
 @Entity
 @Table(name = "product_meta_data")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString(of = {"id", "pageTitle", "siteName", "description", "keywords", "canonical"})
@@ -34,21 +35,4 @@ public class Metadata implements Serializable {
     private List<String> keywords;
 
     private String canonical;
-
-    public Metadata(
-            final String id,
-            final Product product,
-            final String pageTitle,
-            final String siteName,
-            final String description,
-            final List<String> keywords,
-            final String canonical) {
-        this.id = id;
-        this.product = product;
-        this.pageTitle = pageTitle;
-        this.siteName = siteName;
-        this.description = description;
-        this.keywords = keywords;
-        this.canonical = canonical;
-    }
 }

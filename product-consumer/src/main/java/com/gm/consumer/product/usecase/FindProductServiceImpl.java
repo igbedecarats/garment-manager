@@ -1,6 +1,8 @@
 package com.gm.consumer.product.usecase;
 
 import com.gm.consumer.product.domain.ProductRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,10 @@ public class FindProductServiceImpl implements FindProductService {
             .findById(id)
             .orElseThrow(
                 () -> new EntityNotFoundException("No product was found with the id " + id)));
+  }
+
+  @Override
+  public List<ProductDto> findAll() {
+    return productRepository.findAll().stream().map(ProductDto::fromEntity).collect(Collectors.toList());
   }
 }

@@ -7,6 +7,7 @@ import lombok.*;
 @Entity
 @Table(name = "product_pricing")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"id"})
@@ -27,17 +28,4 @@ public class Pricing implements Serializable {
     private float standardPriceNoVat;
 
     private float currentPrice;
-
-    public Pricing(
-            final String id,
-            final Product product,
-            final float standardPrice,
-            final float standardPriceNoVat,
-            final float currentPrice) {
-        this.id = id;
-        this.product = product;
-        this.standardPrice = standardPrice;
-        this.standardPriceNoVat = standardPriceNoVat;
-        this.currentPrice = currentPrice;
-    }
 }

@@ -7,6 +7,7 @@ import lombok.*;
 @Entity
 @Table(name = "product")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"id", "name", "modelNumber"})
@@ -31,15 +32,4 @@ public class Product implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy="product")
     private Description productDescription;
-
-    public Product(
-            final String id,
-            final String name,
-            final String modelNumber,
-            final String productType) {
-        this.id = id;
-        this.name = name;
-        this.modelNumber = modelNumber;
-        this.productType = productType;
-    }
 }

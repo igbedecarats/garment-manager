@@ -3,10 +3,12 @@ package com.gm.consumer.product.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "product_description")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString(of = {"title", "subtitle", "text"})
@@ -26,18 +28,6 @@ public class Description implements Serializable {
 
     private String subtitle;
 
+    @Type(type = "text")
     private String text;
-
-    public Description(
-            final String id,
-            final Product product,
-            final String title,
-            final String subtitle,
-            final String text) {
-        this.id = id;
-        this.product = product;
-        this.title = title;
-        this.subtitle = subtitle;
-        this.text = text;
-    }
 }

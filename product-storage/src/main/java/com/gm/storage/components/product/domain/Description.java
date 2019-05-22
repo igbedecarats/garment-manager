@@ -3,6 +3,7 @@ package com.gm.storage.components.product.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "product_description")
@@ -26,6 +27,7 @@ public class Description implements Serializable {
 
     private String subtitle;
 
+    @Type(type = "text")
     private String text;
 
     public Description(

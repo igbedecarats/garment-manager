@@ -26,7 +26,7 @@ public class ProductDto implements Serializable {
 
     private DescriptionDto product_description;
 
-    public static ProductDto fromEntity(final Product product) {
+    static ProductDto fromEntity(final Product product) {
         return new ProductDto(
                 product.getId(),
                 product.getName(),
@@ -57,7 +57,7 @@ public class ProductDto implements Serializable {
     @Getter
     @Setter
     @ToString(of = {"page_title", "site_name", "description", "keywords", "canonical"})
-    public static class MetadataDto implements Serializable {
+    private static class MetadataDto implements Serializable {
         private String page_title;
         private String site_name;
         private String description;
@@ -70,7 +70,7 @@ public class ProductDto implements Serializable {
     @Getter
     @Setter
     @ToString(of = {"standard_price", "standard_price_no_vat", "currentPrice"})
-    public static class PricingDto implements Serializable {
+    private static class PricingDto implements Serializable {
         private float standard_price;
         private float standard_price_no_vat;
         private float currentPrice;
@@ -81,7 +81,7 @@ public class ProductDto implements Serializable {
     @Getter
     @Setter
     @ToString(of = {"title", "subtitle", "text"})
-    public static class DescriptionDto implements Serializable {
+    private static class DescriptionDto implements Serializable {
         private String title;
         private String subtitle;
         private String text;
