@@ -1,22 +1,8 @@
 spring:
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://mysql-container:3306/products?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: root
-    initialization-mode: always
-    hikari:
-      data-source-properties:
-        cachePrepStmts: true
-        prepStmtCacheSize: 250
-        prepStmtCacheSqlLimit: 2048
-        useServerPrepStmts: true
-
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    database: MYSQL
-    hibernate:
-      ddl-auto: validate
+  main:
+    banner-mode: "off"
+  profiles:
+    active: mysql
 
 logging:
   file: consumer.log
@@ -52,3 +38,46 @@ info:
     version: @project.version@
     name: @project.name@
 
+---
+spring.profiles: local
+
+spring:
+  main:
+    banner-mode: "off"
+  profiles:
+    active: local
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://mysql-container:3306/products?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    initialization-mode: always
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: validate
+---
+spring.profiles: mysql
+
+spring:
+
+  datasource:
+    url: jdbc:tc:mysql:5.7.22://localhost:3306/products?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    initialization-mode: never
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  file: /tmp/consumer.log
