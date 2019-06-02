@@ -27,4 +27,4 @@ ENV DB_HOST=mysql
 
 COPY --from=build /opt/consumer/target/product-consumer-0.0.1-SNAPSHOT.jar consumer.jar
 
-CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "consumer.jar" ]
+CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "-Dspring.profiles.active=local","consumer.jar" ]
