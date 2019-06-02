@@ -74,6 +74,7 @@ spring:
     initialization-mode: never
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
 
+
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
