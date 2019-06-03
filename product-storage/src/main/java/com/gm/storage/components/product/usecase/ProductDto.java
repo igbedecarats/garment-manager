@@ -60,7 +60,7 @@ public class ProductDto implements Serializable {
             );
         }
         if (this.product_description != null) {
-            product.setProductDescription(
+            product.setDescription(
                     new Description(
                             product.getId(),
                             product,

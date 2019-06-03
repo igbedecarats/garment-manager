@@ -1,4 +1,43 @@
 spring:
+  main:
+    banner-mode: "off"
+  profiles:
+    active: test
+
+logging:
+  file: storage.log
+
+rabbitmq:
+  queue: products.queue
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: never
+      cache:
+        time-to-live: 20000ms
+    info:
+      enabled: true
+
+server:
+  port: 8091
+  servlet:
+    context-path: /storage
+
+info:
+  build:
+    group: @project.groupId@
+    artifact: @project.artifactId@
+    version: @project.version@
+    name: @project.name@
+
+---
+spring.profiles: local
+
+spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://mysql-container:3306/products?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
@@ -34,29 +73,25 @@ logging:
       JdbcTemplate: DEBUG
       StatementCreatorUtils: TRACE
 
-rabbitmq:
-  queue: products.queue
+---
+spring.profiles: test
 
-management:
-  endpoints:
-    enabled-by-default: false
-  endpoint:
-    health:
-      enabled: true
-      show-details: never
-      cache:
-        time-to-live: 20000ms
-    info:
-      enabled: true
+spring:
 
-server:
-  port: 8091
-  servlet:
-    context-path: /storage
+  datasource:
+    url: jdbc:tc:mysql:5.7.22://localhost:3306/products?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    initialization-mode: never
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
 
-info:
-  build:
-    group: @project.groupId@
-    artifact: @project.artifactId@
-    version: @project.version@
-    name: @project.name@
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create-drop
+
+mq:
+  info:
+
+    exchange-name: localhost.exchange
+    queue-name: localhost.queue
+    dead-letter-queue-name: user.update.dead-letter

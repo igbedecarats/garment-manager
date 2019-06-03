@@ -2,6 +2,7 @@ package com.gm.storage.components.shared;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -36,7 +37,7 @@ public class RabbitMQConfig {
         private static final Log logger = LogFactory.getLog(DefaultErrorHandler.class);
 
         @Override
-        public void handleError(final Throwable t) {
+        public void handleError(@NotNull final Throwable t) {
             logger.error("Unable to handle message", t);
         }
     }

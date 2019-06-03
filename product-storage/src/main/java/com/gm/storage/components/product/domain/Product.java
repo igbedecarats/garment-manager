@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"id", "name", "modelNumber"})
-@ToString(of = {"id", "name", "modelNumber", "productType", "metaData", "pricing", "productDescription"})
+@ToString(of = {"id", "name", "modelNumber", "productType", "metaData", "pricing", "description"})
 public class Product implements Serializable {
 
     @Id
@@ -30,7 +30,7 @@ public class Product implements Serializable {
     private Pricing pricing;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy="product")
-    private Description productDescription;
+    private Description description;
 
     public Product(
             final String id,

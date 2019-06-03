@@ -27,4 +27,4 @@ ENV DB_HOST=mysql
 
 COPY --from=build /opt/storage/target/product-storage-0.0.1-SNAPSHOT.jar storage.jar
 
-CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "storage.jar" ]
+CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "-Dspring.profiles.active=local", "storage.jar" ]
