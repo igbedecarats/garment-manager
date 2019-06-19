@@ -5,7 +5,8 @@ import com.gm.storage.components.product.domain.ProductRepository;
 import com.gm.storage.components.product.usecase.ProductDto;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
+import javax.persistence.EntityNotFoundException;
+import static org.junit.Assert.assertEquals;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -29,8 +30,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.shaded.org.apache.commons.lang.StringUtils;
 
-import static org.junit.Assert.assertEquals;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(initializers = StoreProductServiceImplIt.Initializer.class)
@@ -45,7 +44,7 @@ public class StoreProductServiceImplIt {
 
         @Bean
         public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory,
-                                             Jackson2JsonMessageConverter producerJackson2MessageConverter) {
+                                             final Jackson2JsonMessageConverter producerJackson2MessageConverter) {
             final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
             rabbitTemplate.setMessageConverter(producerJackson2MessageConverter);
             return rabbitTemplate;
@@ -89,14 +88,11 @@ public class StoreProductServiceImplIt {
         rabbitTemplate.convertAndSend(queueName, dto);
 
         //Then
-        Product product = productRepository.findAll().stream().filter(p -> p.getId().equals(dto.getId())).findFirst().get();
+        Product product = productRepository.findAll().stream().findAny()
+                .orElseThrow(() -> new EntityNotFoundException("No products were found"));
 
         assertEquals(dto.getId(), product.getId());
 
-    }
-
-    private Callable<Boolean> isUserConsumedAsync() {
-        return () -> outputCapture.toString().contains("Consumed user");
     }
 
     public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
